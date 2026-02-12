@@ -1,0 +1,88 @@
+@import './variables.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-main;
+  color: $black;
+  background-color: $cream;
+  line-height: 1.6;
+}
+
+html, body, #root {
+  height: 100vh;
+}
+
+a {
+  color: $brown;
+  text-decoration: none;
+  transition: color $transition-base;
+  
+  &:hover {
+    color: $brown-light;
+  }
+}
+
+button {
+  font-family: $font-main;
+  cursor: pointer;
+  border: none;
+  transition: all $transition-base;
+  
+  &:hover {
+    transform: translateY(-2px);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+input, select, textarea {
+  font-family: $font-main;
+  border: 1px solid $gray-light;
+  padding: $spacing-sm $spacing-md;
+  border-radius: $radius-md;
+  transition: border-color $transition-base;
+  
+  &:focus {
+    outline: none;
+    border-color: $brown;
+    box-shadow: 0 0 0 3px rgba(139, 111, 71, 0.1);
+  }
+}
+
+// Utility classes
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 $spacing-md;
+}
+
+.flex {
+  display: flex;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.gap-md {
+  gap: $spacing-md;
+}
+
+.mt-lg {
+  margin-top: $spacing-lg;
+}
+
+.mb-lg {
+  margin-bottom: $spacing-lg;
+}

@@ -1,0 +1,49 @@
+// Colors
+$brown: #8b6f47;
+$brown-light: #a0855b;
+$brown-dark: #6b5535;
+$cream: #f5f1e8;
+$white: #ffffff;
+$black: #1a1a1a;
+$gray: #6b6b6b;
+$gray-light: #e0e0e0;
+$error: #dc2626;
+$success: #16a34a;
+$warning: #ea580c;
+
+// Spacing
+$spacing-xs: 0.25rem;
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+$spacing-xl: 2rem;
+$spacing-2xl: 3rem;
+
+// Typography
+$font-main: 'Inter', sans-serif;
+$font-size-sm: 0.9rem;
+$font-size-base: 1rem;
+$font-size-lg: 1.25rem;
+$font-size-xl: 2rem;
+$font-size-2xl: 2.5rem;
+
+// Border Radius
+$radius-sm: 0.25rem;
+$radius-md: 0.5rem;
+$radius-lg: 1rem;
+
+// Transitions
+$transition-fast: 150ms ease-in-out;
+$transition-base: 300ms ease-in-out;
+$transition-slow: 500ms ease-in-out;
+
+// Breakpoints
+$breakpoint-sm: 540px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1920px;
+
+// Z-index
+$z-header: 100;
+$z-modal: 1000;
+$z-tooltip: 500;

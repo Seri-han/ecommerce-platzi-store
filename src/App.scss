@@ -1,0 +1,25 @@
+@import './styles/globals.scss';
+@import './styles/components/header.scss';
+@import './styles/components/productCard.scss';
+@import './styles/components/cart.scss';
+@import './styles/components/loading.scss';
+@import './styles/components/error.scss';
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+  padding: $spacing-2xl $spacing-md;
+}
+
+footer {
+  background-color: $brown-dark;
+  color: $white;
+  padding: $spacing-2xl;
+  text-align: center;
+  margin-top: auto;
+}
