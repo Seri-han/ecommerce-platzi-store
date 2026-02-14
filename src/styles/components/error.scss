@@ -1,0 +1,58 @@
+@import '../variables.scss';
+
+.error-message {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(239, 68, 68, 0.05) 100%);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  text-align: center;
+  color: #fca5a5;
+  animation: slideUp 0.5s ease-out;
+
+  .error-icon {
+    font-size: $font-size-2xl;
+    margin-bottom: $spacing-md;
+    animation: bounce 0.6s ease-in-out;
+  }
+
+  .error-text {
+    margin-bottom: $spacing-md;
+    font-size: $font-size-base;
+  }
+
+  .btn-retry {
+    padding: $spacing-sm $spacing-lg;
+    background-color: $error;
+    color: $white;
+    border-radius: $radius-md;
+    border: none;
+    cursor: pointer;
+    transition: all $transition-base;
+    font-weight: 600;
+
+    &:hover {
+      box-shadow: 0 0 20px rgba(239, 68, 68, 0.4);
+      transform: translateY(-2px);
+    }
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

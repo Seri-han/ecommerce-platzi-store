@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 export const useFetch = (fetchFn) => {
     const [data, setData] = useState(null);
-    const [loading, setLoading] = useState(true);
+const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
     const refetch = async () => {
@@ -19,9 +19,11 @@ export const useFetch = (fetchFn) => {
         }
     };
 
-  useEffect(() => {
-    refetch();
-  }, []);
+useEffect(() => {
+  setLoading(true);
+  refetch();
+}, []);
+;
 
     return { data, loading, error, refetch };
 }

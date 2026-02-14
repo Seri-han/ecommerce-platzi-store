@@ -1,0 +1,126 @@
+@import '../variables.scss';
+
+.header {
+  background-color: $black-light;
+  border-bottom: 1px solid $gray-light;
+  padding: $spacing-lg $spacing-md;
+  position: sticky;
+  top: 0;
+  z-index: $z-header;
+  box-shadow: $shadow-md;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .logo {
+    font-size: $font-size-xl;
+    font-weight: 400;
+    color: $white;
+    text-decoration: none;
+    transition: all $transition-base;
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    font-family: $font-display;
+
+    &::before {
+      content: '✦';
+      color: $primary;
+      font-size: $font-size-2xl;
+    }
+
+    &:hover {
+      color: $white;
+      animation: glow 2s ease-in-out;
+    }
+  }
+
+  .nav {
+    display: flex;
+    gap: $spacing-xl;
+
+    a {
+      color: $white;
+      text-decoration: none;
+      transition: all $transition-base;
+      font-weight: 500;
+      position: relative;
+      font-family: $font-display;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: $primary-light;
+        transition: width $transition-base;
+      }
+
+      &:hover {
+        color: $white;
+
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .cart-link {
+    position: relative;
+    font-size: $font-size-lg;
+    text-decoration: none;
+    transition: all $transition-base;
+
+    .cart-icon {
+      display: inline-block;
+      transition: all $transition-base;
+    }
+
+    &:hover .cart-icon {
+      transform: scale(1.2) rotate(10deg);
+      animation: bounce 0.6s ease-in-out;
+    }
+
+    .cart-badge {
+      position: absolute;
+      top: -15px;
+      right: -15px;
+      background: $white;
+      color: $black;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: $font-size-sm;
+      font-weight: 700;
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+      animation: bounce 0.6s ease-in-out;
+    }
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@media (max-width: $breakpoint-md) {
+  .nav {
+    gap: $spacing-lg;
+    font-size: $font-size-sm;
+  }
+}

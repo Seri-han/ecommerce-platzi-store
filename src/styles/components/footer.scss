@@ -1,0 +1,76 @@
+@import "../variables.scss";
+
+.footer {
+  background-color: $black-light;
+  color: $white;
+  padding: $spacing-2xl $spacing-md;
+  margin-top: auto;
+  border-top: 1px solid $gray-light;
+}
+
+.footer-content {
+  max-width: 1280px;
+  margin: 0 auto $spacing-2xl;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: $spacing-2xl;
+
+  .footer-section {
+    animation: slideUp 0.6s ease-out;
+
+    h4 {
+      font-size: $font-size-lg;
+      margin-bottom: $spacing-md;
+      font-family: $font-display;
+      color: $white;
+    }
+
+    p {
+      color: $white;
+      margin-bottom: $spacing-sm;
+    }
+
+    ul {
+      list-style: none;
+
+      li {
+        margin-bottom: $spacing-sm;
+
+        a {
+          color: $white;
+          transition: all $transition-base;
+          position: relative;
+
+          &::after {
+            content: "";
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: $primary-light;
+            transition: width $transition-base;
+          }
+
+          &:hover {
+            color: $white;
+
+            &::after {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.footer-bottom {
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: $spacing-lg;
+  border-top: 1px solid $white;
+  color: $white;
+  font-size: $font-size-sm;
+}

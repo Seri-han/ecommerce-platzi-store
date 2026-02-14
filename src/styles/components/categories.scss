@@ -1,0 +1,141 @@
+@import '../variables.scss';
+
+.categories {
+  display: flex;
+  gap: $spacing-2xl;
+
+  @media (max-width: $breakpoint-md) {
+    flex-direction: column;
+  }
+}
+
+.filters {
+  width: 250px;
+  flex-shrink: 0;
+  animation: slideIn 0.6s ease-out;
+
+  @media (max-width: $breakpoint-md) {
+    width: 100%;
+  }
+
+  .filter-group {
+    margin-bottom: $spacing-xl;
+    padding-bottom: $spacing-xl;
+    border-bottom: 1px solid $gray-light;
+
+    h3 {
+      font-size: $font-size-lg;
+      color: $primary;
+      margin-bottom: $spacing-md;
+    }
+
+    label {
+      display: block;
+      margin-bottom: $spacing-sm;
+      font-weight: 600;
+      color: $white;
+    }
+
+    input, select {
+      width: 100%;
+      padding: $spacing-md;
+      border: 1px solid $gray-light;
+      border-radius: $radius-md;
+      background-color: $black-lighter;
+      color: $white;
+
+      &:focus {
+        border-color: $primary;
+        box-shadow: 0 0 0 3px rgba($primary-dark, 0.1);
+      }
+    }
+  }
+
+  .category-btn {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: $spacing-sm $spacing-md;
+    margin-bottom: $spacing-sm;
+    background-color: transparent;
+    border: 1px solid $gray-light;
+    border-radius: $radius-md;
+    color: $white;
+    transition: all $transition-base;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $primary;
+      background-color: rgba(16, 185, 129, 0.05);
+      transform: translateX(4px);
+    }
+
+    &.active {
+      background: linear-gradient(135deg, $primary 0%, $primary-light 100%);
+      color: $black;
+      border-color: $primary;
+      font-weight: 600;
+    }
+  }
+}
+
+.products-section {
+  flex: 1;
+  animation: slideUp 0.6s ease-out;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: $spacing-lg;
+  margin-bottom: $spacing-2xl;
+
+  @media (max-width: $breakpoint-md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.empty-state {
+  text-align: center;
+  padding: $spacing-2xl;
+  color: $gray;
+  font-size: $font-size-lg;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: $spacing-lg;
+  margin-top: $spacing-2xl;
+
+  .pagination-btn {
+    padding: $spacing-sm $spacing-lg;
+    background: linear-gradient(135deg, $primary 0%, $primary-light 100%);
+    color: $black;
+    border-radius: $radius-md;
+    border: 2px solid $primary;
+    transition: all $transition-base;
+    font-weight: 600;
+    cursor: pointer;
+
+    &:hover:not(:disabled) {
+      box-shadow: 0 0 20px rgba($primary-dark, 0.4);
+      transform: translateY(-2px);
+    }
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+  }
+
+  .pagination-info {
+    color: $white;
+    font-weight: 500;
+  }
+}

@@ -1,25 +1,106 @@
+// Variables first
+@import './styles/variables.scss';
+
+// Global styles
 @import './styles/globals.scss';
+
+// Component styles
 @import './styles/components/header.scss';
+@import './styles/components/footer.scss';
 @import './styles/components/productCard.scss';
+@import './styles/components/productDetails.scss';
+@import './styles/components/categories.scss';
 @import './styles/components/cart.scss';
+@import './styles/components/cartItem.scss';
 @import './styles/components/loading.scss';
 @import './styles/components/error.scss';
+@import './styles/components/home.scss';
+@import './styles/components/notFound.scss';
 
+// Main layout
 #root {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-main {
-  flex: 1;
-  padding: $spacing-2xl $spacing-md;
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-footer {
-  background-color: $brown-dark;
-  color: $white;
-  padding: $spacing-2xl;
-  text-align: center;
-  margin-top: auto;
+.main-content {
+  flex: 1;
+  padding: $spacing-2xl $spacing-md;
+
+  @media (max-width: $breakpoint-md) {
+    padding: $spacing-xl $spacing-md;
+  }
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.btn {
+  padding: $spacing-sm $spacing-lg;
+  font-family: $font-display;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, $primary 0%, $primary-light 100%);
+  color: $black;
+  border: none;
+  border-radius: $radius-md;
+  font-size: $font-size-base;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all $transition-base;
+  text-decoration: none;
+  display: inline-block;
+
+  &:hover:not(:disabled) {
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+    transform: translateY(-2px);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  &.btn-primary {
+    background: linear-gradient(135deg, $primary 0%, $primary-light 100%);
+    color: $black;
+      font-family: $font-display;
+  text-transform: uppercase;
+
+    &:hover:not(:disabled) {
+      box-shadow: 0 0 30px rgba(16, 185, 129, 0.5);
+    }
+  }
+
+  &.btn-secondary {
+    background-color: transparent;
+    color: $primary;
+    border: 2px solid $primary;
+      font-family: $font-display;
+  text-transform: uppercase;
+    
+
+    &:hover:not(:disabled) {
+      background-color: rgba(16, 185, 129, 0.1);
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
+    }
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+
+    &:hover {
+      transform: none;
+      box-shadow: none;
+    }
+  }
 }

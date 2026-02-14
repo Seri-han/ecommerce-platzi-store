@@ -1,0 +1,191 @@
+@import '../variables.scss';
+
+.product-card {
+  background-color: $black-light;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  transition: all $transition-base;
+  border: 1px solid $gray-light;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  animation: slideUp 0.5s ease-out;
+
+  &:hover {
+    border-color: $primary;
+    box-shadow: 0 0 20px rgba($primary-dark, 0.2);
+    transform: translateY(-8px);
+  }
+}
+
+.product-image-link {
+  display: block;
+  overflow: hidden;
+  background-color: $black-lighter;
+  position: relative;
+}
+
+.product-image {
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(135deg, $black-lighter 0%, $black 100%);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform $transition-base;
+    opacity: 0;
+
+    &.loaded {
+      opacity: 1;
+    }
+  }
+
+  &:hover img {
+    transform: scale(1.1);
+  }
+
+  .image-skeleton {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      $gray-light 25%,
+      $black-lighter 50%,
+      $gray-light 75%
+    );
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+  }
+
+  .image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, $black-lighter 0%, $black 100%);
+    color: $gray;
+    font-size: 3rem;
+  }
+
+  .product-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(rgba($black, 0.2), 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity $transition-base;
+
+    .view-btn {
+      background-color: $white;
+      color: $black;
+      padding: $spacing-sm $spacing-lg;
+      border-radius: $radius-md;
+      font-weight: 600;
+      font-size: $font-size-sm;
+      animation: slideUp 0.3s ease-out;
+      transition: $transition-base;
+
+      &:hover, &:focus, &:active {
+        background-color: $black;
+        color: $white;
+        box-shadow: 0 0 15px rgba($white, 0.4);
+        transform: translateY(-2px);
+      }
+    }
+  }
+
+  &:hover .product-overlay {
+    opacity: 1;
+  }
+}
+
+.product-info {
+  padding: $spacing-md;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  h3 {
+    font-size: $font-size-sm;
+    margin-bottom: $spacing-sm;
+    line-height: 1.4;
+    color: $white;
+    font-weight: 600;
+
+    a {
+      color: inherit;
+      transition: color $transition-base;
+
+      &:hover {
+        color: $primary;
+      }
+    }
+  }
+
+  .product-category {
+    font-size: $font-size-sm;
+    color: $gray;
+    margin-bottom: $spacing-md;
+    text-transform: capitalize;
+  }
+
+  .product-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+
+    .price {
+      font-size: $font-size-lg;
+      font-weight: 700;
+      color: $white;
+    }
+
+    .btn-add-cart {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: $white;
+      color: $black;
+      font-size: $font-size-lg;
+      font-weight: 700;
+      transition: all $transition-base;
+      border: 2px solid $primary;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:hover:not(:disabled) {
+        background-color: $primary-light;
+        box-shadow: 0 0 15px rgba($primary-dark, 0.4);
+        transform: scale(1.1);
+      }
+
+      &.adding {
+        animation: bounce 0.6s ease-in-out;
+      }
+    }
+  }
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
