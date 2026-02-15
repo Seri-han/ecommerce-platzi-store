@@ -5,10 +5,8 @@ import "../styles/components/cartItem.scss";
 export default function CartItem({ item }) {
   const { updateQuantity, removeFromCart } = useCartStore();
 
-  // Safe image handling without getImageUrl
   const imageUrl = item.image ? item.image.trim() : item.images?.[0]?.trim() || null;
 
-  // Ensure proper types
   const itemPrice = parseFloat(item.price) || 0;
   const itemQuantity = parseInt(item.quantity) || 1;
   const itemTotal = itemPrice * itemQuantity;
