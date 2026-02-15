@@ -37,7 +37,7 @@
 
 .product-image {
   background: linear-gradient(135deg, $black-lighter 0%, $black 100%);
-  border-radius: $radius-lg;
+  // border-radius: $radius-lg;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -47,7 +47,7 @@
 
   img {
     max-width: 100%;
-    border-radius: none;
+    // border-radius: none;
     max-height: 100%;
     object-fit: cover;
     animation: slideUp 0.8s ease-out;
@@ -103,7 +103,7 @@
     .price {
       font-size: $font-size-3xl;
       font-weight: 700;
-      color: $primary;
+      color: $white;
       display: block;
     }
   }
