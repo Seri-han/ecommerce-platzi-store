@@ -2,6 +2,8 @@
 
 A modern React e-commerce web application built with Vite, showcasing a clean UI and strong developer best practices.
 
+**Live Demo:** [https://ecommerce-platzi-store.vercel.app](https://ecommerce-platzi-store.vercel.app)
+
 ## Features
 
 - ✅ Product browsing by category
@@ -86,3 +88,12 @@ Pagination chosen for:
 - Product recommendations
 - User reviews & ratings
 - Wishlist feature
+- Use a hamburger nav for mobile translation
+
+## Screenshots
+![Home Page](./assets/home-page.png)
+![Product Detail](./assets/product-detail.png)
+![Cart](./assets/cart-page.png)
+
+## Deployment
+Deployed on Vercel: https://ecommerce-platzi-store.vercel.app
