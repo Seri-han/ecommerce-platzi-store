@@ -37,7 +37,7 @@
 
 .product-image {
   background: linear-gradient(135deg, $black-lighter 0%, $black 100%);
-  // border-radius: $radius-lg;
+  border-radius: $radius-lg;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -84,7 +84,7 @@
   }
 
   .description {
-    color: $gray;
+    color: white;
     line-height: 1.8;
     margin-bottom: $spacing-lg;
     padding: $spacing-lg;

@@ -29,12 +29,12 @@ export default function Categories() {
 
   const fetchCategories = async () => {
     try {
-      console.log('📂 Fetching all categories...');
+      // console.log('📂 Fetching all categories...');
       const res = await platziApi.getAllCategories();
-      console.log('✅ Categories loaded:', res.data.length);
+      // console.log('✅ Categories loaded:', res.data.length);
       setCategories(res.data);
     } catch (err) {
-      console.error('❌ Error loading categories:', err);
+      // console.error('❌ Error loading categories:', err);
       setError('Failed to load categories');
     }
   };
@@ -46,10 +46,10 @@ export default function Categories() {
       
       let res;
       if (selectedCategory) {
-        console.log('📦 Fetching products for category:', selectedCategory);
+        // console.log('📦 Fetching products for category:', selectedCategory);
         res = await platziApi.getProductsByCategory(selectedCategory);
       } else {
-        console.log('📦 Fetching all products...');
+        // console.log('📦 Fetching all products...');
         res = await platziApi.getAllProducts(50);
       }
 

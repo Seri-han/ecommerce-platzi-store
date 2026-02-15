@@ -17,7 +17,7 @@ A modern React e-commerce web application built with Vite, showcasing a clean UI
 - **Framework**: React 18 + Vite
 - **Routing**: React Router v6
 - **State Management**: Zustand (lightweight, simple)
-- **Styling**: Tailwind CSS
+- **Styling**: SCSS
 - **HTTP Client**: Axios
 - **API**: Platzi Fake Store REST API
 

@@ -71,7 +71,7 @@ input[type="number"].qty-input[type=number] {
   border: 1px solid $gray-light;
   border-radius: $radius-md;
   overflow: hidden;
-  background-color: $black-lighter;
+  background-color: $black-light;
 
   @media (max-width: 977px) {
     display: flex;
@@ -84,7 +84,7 @@ input[type="number"].qty-input[type=number] {
   .qty-btn {
     padding: $spacing-sm $spacing-md;
     background-color: transparent;
-    color: $primary;
+    color: $white;
     font-weight: 700;
     border: none;
     cursor: pointer;

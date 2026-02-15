@@ -1,10 +1,9 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useFetch } from "../hooks/useFetch";
 import { platziApi } from "../api/platziApi";
 import useCartStore from "../store/cartStore";
 import { cleanProductName, formatPrice } from "../utils/textFormatter";
-import { getImageUrl } from "../utils/imageHandler";
 import LoadingSpinner from "../components/LoadingSpinner";
 import ErrorMessage from "../components/ErrorMessage";
 import "../styles/components/productDetails.scss";
@@ -14,6 +13,7 @@ export default function ProductDetails() {
   const navigate = useNavigate();
   const { addToCart } = useCartStore();
   const [imageError, setImageError] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   const {
     data: product,
@@ -22,27 +22,23 @@ export default function ProductDetails() {
     refetch,
   } = useFetch(() => platziApi.getProductById(id), [id]);
 
+  useEffect(() => {
+    setImageError(false);
+    setImageLoaded(false);
+  }, [product]);
 
   const handleAddToCart = () => {
     if (product) {
       addToCart(product);
-      }
+    }
   };
 
-  console.log("PRODUCT STATE:", product);
-
-
-
   if (loading) return <LoadingSpinner />;
-
   if (error) return <ErrorMessage message={error} onRetry={refetch} />;
+  if (!product) return <ErrorMessage message="Product not found" />;
 
-if (!loading && !product) {
-  return <ErrorMessage message="Product not found" />;
-}
-
+  const imageUrl = product.image ? product.image.trim() : product.images?.[0]?.trim() || null;
   const productName = cleanProductName(product.title);
-  const imageUrl = getImageUrl(product);
   const price = formatPrice(product.price);
 
   return (
@@ -53,16 +49,23 @@ if (!loading && !product) {
 
       <div className="product-container">
         <div className="product-image">
-          {imageUrl && !imageError ? (
+          {!imageLoaded && !imageError && <div className="image-skeleton"></div>}
+
+          {imageUrl && !imageError && (
             <img
               src={imageUrl}
               alt={productName}
-              onError={() => {
-                console.error("❌ Image failed to load:", imageUrl);
-                setImageError(true);
+              className={imageLoaded ? "loaded" : ""}
+              style={{
+                opacity: imageLoaded ? 1 : 0,
+                transition: "opacity 0.3s ease-in-out",
               }}
+              onLoad={() => setImageLoaded(true)}
+              onError={() => setImageError(true)}
             />
-          ) : (
+          )}
+
+          {(!imageUrl || imageError) && (
             <div className="image-placeholder">
               <span>📦</span>
             </div>
@@ -74,8 +77,7 @@ if (!loading && !product) {
           <p className="category">{product.category?.name}</p>
 
           <div className="rating">
-            ⭐ {product.rating?.rate || "N/A"} ({product.rating?.count || 0}{" "}
-            reviews)
+            ⭐ {product.rating?.rate || "N/A"} ({product.rating?.count || 0} reviews)
           </div>
 
           <p className="description">{product.description}</p>
@@ -84,10 +86,7 @@ if (!loading && !product) {
             <span className="price">{price}</span>
           </div>
 
-          <button
-            className="btn btn-primary btn-large"
-            onClick={handleAddToCart}
-          >
+          <button className="btn btn-primary btn-large" onClick={handleAddToCart}>
             Add to Cart
           </button>
         </div>
